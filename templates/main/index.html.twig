@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}SECURITY PROJECT{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,17 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/juanra/DWES/security/src/Controller/MainController.php</code></li>
-        <li>Your template at <code>/home/juanra/DWES/security/templates/main/index.html.twig</code></li>
+    <p style="font-size:45px">Welcome to Symfony Security Project.</p>
+    <img src="https://media.istockphoto.com/id/2153383852/es/foto/ciberseguridad-y-protecci%C3%B3n-de-datos-en-internet-escudo-acceso-seguro-y-conexi%C3%B3n-encriptada.jpg?s=612x612&w=0&k=20&c=iT-DCi05uUaGhDJHbXw6-xuDaKCR9QbshXrvpopT03E=">
+    <ul style="list-style:none">
+        
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li><a href="/logout"><strong>SALIR</strong></a></li>
+        {% else %}
+            <li><a href="/login"><strong>LOGIN</strong>  (Si ya tiene una cuenta)</a></li>
+            <li><a href="/register"><strong>REGISTRO</strong> (Para crear una cuenta)</a></li>
+        {% endif %}
     </ul>
 </div>
 {% endblock %}
